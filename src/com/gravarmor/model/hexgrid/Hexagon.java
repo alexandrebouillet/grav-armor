@@ -83,6 +83,7 @@ public class Hexagon {
         g2.fillPolygon(poly);
         g2.setColor(Color.BLACK);
         g2.drawPolygon(poly);
+        g2.drawString(this.getI()+","+this.getJ(), this.getX() - 15, this.getY());
 
 
     }

@@ -13,11 +13,12 @@ public class HexGridPanel extends JPanel {
     //mouse variables here
     //Point mPt = new Point(0,0);
 
-    protected Hexagrid hexBoard = new Hexagrid();
+    public Hexagrid hexBoard = new Hexagrid();
 
     public HexGridPanel()
     {
-
+        MyMouseListener ml = new MyMouseListener();
+        addMouseListener(ml);
     }
 
     public void paintComponent(Graphics g)
@@ -32,5 +33,16 @@ public class HexGridPanel extends JPanel {
             }
         }
     }
+
+    class MyMouseListener extends MouseAdapter	{	//inner class inside DrawingPanel
+        public void mouseClicked(MouseEvent e) {
+            int x = e.getX();
+            int y = e.getY();
+
+          Hexagon hex = hexBoard.getNearestHex(x, y);
+          System.out.println(hex.getI() +" - " + hex.getJ());
+          hexBoard.getNeighborHexs(hex, 1 );
+        }
+    } //end of MyMouseListe
 
 }
