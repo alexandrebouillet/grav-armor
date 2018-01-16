@@ -3,7 +3,7 @@ package com.gravarmor.model.hexgrid;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Hexagrid {
+public class Hexagrid extends Polygon{
 
     public static int SIDELENGTH =35;
     public static int DISTANCE = 30;
@@ -57,37 +57,31 @@ public class Hexagrid {
 
     /*
         Calcul de l'hexagone le plus proche en cliquant sur la map
-
-        A OPTIMISER !!!
      */
-    public Hexagon getNearestHex(int x, int y){
-        float q = (float)( x * Math.sqrt(3)/3 - y / 3) / SIDELENGTH;
-        float r = 2f/3f * y / SIDELENGTH;
+    public Hexagon getClickedHex(Point px){
 
-        int cx = (int) q;
-        int cz = (int) r;
-        int cy = -cx-cz;
-        int col = cx + (cz + (cz&1)) /2;
-        int row = cz;
-
-        System.out.println(" col :" + col +"- row :" + row);
-        return this.board[row][col];
+        for (int i = 0; i < gridMaxI; i++){
+            for (int j = 0; j < gridMaxJ; j++) {
+                if(board[i][j].contains(px)){
+                    return board[i][j];
+                }
+            }
+        }
+        return board[0][0];
     }
     /*
-    Renvoi tous les hexagones voisons d'une certaine distance
+    Renvoi tous les hexagones voisons
+     */ public Hexagon[] getNeighborHexs(Hexagon hex){
 
-    A REVOIR !!
 
-     */ public ArrayList<Hexagon> getNeighborHexs(Hexagon hex, int distance){
-
-         ArrayList<Hexagon> neighborHexs = new ArrayList<>();
-
-         for (int i = hex.getI() - distance; i<= hex.getI() + distance; i++){
-            for (int j = hex.getJ() - distance; j <= hex.getJ() + distance; j++ ){
-                neighborHexs.add(this.board[i][j]);
-                System.out.println(this.board[i][j].getI() +"-"+ this.board[i][j].getJ() );
-            }
-         }
+         Hexagon[] neighborHexs = {
+                 board[hex.getI()+1][hex.getJ()],
+                 board[hex.getI()+1][hex.getJ()-1],
+                 board[hex.getI()][hex.getJ()-1],
+                 board[hex.getI()-1][hex.getJ()],
+                 board[hex.getI()-1][hex.getJ()+1],
+                 board[hex.getI()][hex.getJ()+1],
+         };
 
         return neighborHexs;
     }

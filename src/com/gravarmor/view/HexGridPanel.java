@@ -1,5 +1,6 @@
 package com.gravarmor.view;
 
+import com.gravarmor.controller.HexGridController;
 import com.gravarmor.model.hexgrid.Hexagon;
 import com.gravarmor.model.hexgrid.Hexagrid;
 
@@ -13,12 +14,12 @@ public class HexGridPanel extends JPanel {
     //mouse variables here
     //Point mPt = new Point(0,0);
 
-    public Hexagrid hexBoard = new Hexagrid();
+    private Hexagrid hexBoard = new Hexagrid();
 
     public HexGridPanel()
     {
-        MyMouseListener ml = new MyMouseListener();
-        addMouseListener(ml);
+        HexGridController hexClick = new HexGridController(this.hexBoard);
+        addMouseListener(hexClick);
     }
 
     public void paintComponent(Graphics g)
@@ -33,16 +34,4 @@ public class HexGridPanel extends JPanel {
             }
         }
     }
-
-    class MyMouseListener extends MouseAdapter	{	//inner class inside DrawingPanel
-        public void mouseClicked(MouseEvent e) {
-            int x = e.getX();
-            int y = e.getY();
-
-          Hexagon hex = hexBoard.getNearestHex(x, y);
-          System.out.println(hex.getI() +" - " + hex.getJ());
-          hexBoard.getNeighborHexs(hex, 1 );
-        }
-    } //end of MyMouseListe
-
 }

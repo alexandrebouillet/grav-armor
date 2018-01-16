@@ -2,7 +2,7 @@ package com.gravarmor.model.hexgrid;
 
 import java.awt.*;
 
-public class Hexagon {
+public class Hexagon extends Polygon {
 
 
     protected Point centerPoint;
@@ -90,14 +90,16 @@ public class Hexagon {
 
     public Polygon convertVerticesToPolygon(){
 
-        Polygon hex = new Polygon();
+
 
         for (int i = 0; i < this.vertices.length; i++){
-            hex.addPoint((int)this.vertices[i].getX(), (int)this.vertices[i].getY());
+            this.addPoint((int)this.vertices[i].getX(), (int)this.vertices[i].getY());
         }
 
 
-        return hex;
+        return this;
     }
+
+
 
 }
