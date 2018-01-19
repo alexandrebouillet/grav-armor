@@ -16,10 +16,13 @@ public class HexGridPanel extends JPanel {
 
     private Hexagrid hexBoard = new Hexagrid();
 
+    private ToolBarPanel toolbar = new ToolBarPanel();
+
     public HexGridPanel()
     {
         HexGridController hexClick = new HexGridController(this.hexBoard);
         addMouseListener(hexClick);
+        this.add(toolbar, BorderLayout.NORTH);
     }
 
     public void paintComponent(Graphics g)
