@@ -14,6 +14,11 @@ public class Hexagon extends Polygon {
     protected int x;
     protected int y;
 
+    protected Hexagon[] neighborHexs;
+
+
+
+
     public Hexagon(int x, int y, int i, int j){
         this.setI(i);
         this.setJ(j);
@@ -64,6 +69,13 @@ public class Hexagon extends Polygon {
         return (int)this.centerPoint.getY();
     }
 
+    public Hexagon[] getNeighborHexs() {
+        return neighborHexs;
+    }
+
+    public void setNeighborHexs(Hexagon[] neighborHexs) {
+        this.neighborHexs = neighborHexs;
+    }
 
     public void calculateVertices(){
 
@@ -99,6 +111,8 @@ public class Hexagon extends Polygon {
 
         return this;
     }
+
+
 
 
 

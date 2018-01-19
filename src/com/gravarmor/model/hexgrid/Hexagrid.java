@@ -8,14 +8,14 @@ public class Hexagrid extends Polygon{
     public static int SIDELENGTH =35;
     public static int DISTANCE = 30;
     //Nombre de ligne
-    protected int gridMaxI = 17;
+    protected int gridMaxI = 18;
     //Nombre de colonne
-    protected int gridMaxJ = 23;
+    protected int gridMaxJ = 24;
 
     protected Hexagon[][] board = new Hexagon[gridMaxI][gridMaxJ];
 
     public Hexagrid() {
-        board[0][0] = new Hexagon(7, 30, 0, 0);
+        board[0][0] = new Hexagon(-10, 30, 0, 0);
 
         for (int i = 0; i < gridMaxI; i++){
             for (int j = 0; j < gridMaxJ; j++) {
@@ -79,11 +79,13 @@ public class Hexagrid extends Polygon{
                  board[hex.getI()+1][hex.getJ()-1],
                  board[hex.getI()][hex.getJ()-1],
                  board[hex.getI()-1][hex.getJ()],
-                 board[hex.getI()-1][hex.getJ()+1],
+                 board[hex.getI()-1][hex.getJ()-1],
                  board[hex.getI()][hex.getJ()+1],
          };
+        hex.setNeighborHexs(neighborHexs);
 
-        return neighborHexs;
+
+        return hex.getNeighborHexs();
     }
 
 }

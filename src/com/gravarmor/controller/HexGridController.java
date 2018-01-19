@@ -22,6 +22,7 @@ public class HexGridController extends MouseAdapter {
         Hexagon hex;
         hex = this.hexBoard.getClickedHex(px);
         System.out.println(hex.getI() +" - " + hex.getJ());
+        
     }
 
 }
