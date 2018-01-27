@@ -1,6 +1,8 @@
 package com.gravarmor.model.hexgrid;
 
 import java.awt.*;
+import java.text.DecimalFormat;
+import java.util.Random;
 
 public class Hexagon extends Polygon {
 
@@ -90,8 +92,8 @@ public class Hexagon extends Polygon {
 
     public void drawHexagon(Graphics2D g2){
         Polygon poly = this.convertVerticesToPolygon();
-
-        g2.setColor(new Color(240, 219, 114, 229));
+        this.generateRandomColor();
+        g2.setColor(this.generateRandomColor());
         g2.fillPolygon(poly);
         g2.setColor(Color.BLACK);
         g2.drawPolygon(poly);
@@ -110,6 +112,29 @@ public class Hexagon extends Polygon {
 
 
         return this;
+    }
+
+
+    public Color generateRandomColor() {
+        Random random = new Random();
+        Color colorHex;
+        System.out.println(random.nextFloat());
+
+        // Watter
+        if (random.nextFloat() <0.1){
+            colorHex = new Color(0x63DAFF);
+        }
+        // Floors
+        else if ( random.nextFloat() >= 0.1 && random.nextFloat() < 0.9){
+            colorHex = new Color(240, 219, 114, 229);
+        }
+        else{
+            //Mountains
+            colorHex = Color.GRAY;
+        }
+
+
+        return colorHex;
     }
 
 

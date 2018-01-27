@@ -15,7 +15,7 @@ public class Hexagrid extends Polygon{
     protected Hexagon[][] board = new Hexagon[gridMaxI][gridMaxJ];
 
     public Hexagrid() {
-        board[0][0] = new Hexagon(-10, 30, 0, 0);
+        board[0][0] = new Hexagon(-10, 20, 0, 0);
 
         for (int i = 0; i < gridMaxI; i++){
             for (int j = 0; j < gridMaxJ; j++) {

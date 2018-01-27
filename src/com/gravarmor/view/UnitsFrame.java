@@ -8,7 +8,7 @@ public class UnitsFrame extends JFrame{
     public UnitsFrame(){
         this.setTitle("Liste des unités");
 
-        setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         Container content = this.getContentPane();
 
         //this.add(panel);  -- cannot be done in a static context
