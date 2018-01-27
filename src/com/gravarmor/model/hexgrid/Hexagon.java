@@ -121,11 +121,11 @@ public class Hexagon extends Polygon {
         System.out.println(random.nextFloat());
 
         // Watter
-        if (random.nextFloat() <0.1){
+        if (random.nextFloat() <0.15){
             colorHex = new Color(0x63DAFF);
         }
         // Floors
-        else if ( random.nextFloat() >= 0.1 && random.nextFloat() < 0.9){
+        else if ( random.nextFloat() >= 0.15 && random.nextFloat() < 0.9){
             colorHex = new Color(240, 219, 114, 229);
         }
         else{
