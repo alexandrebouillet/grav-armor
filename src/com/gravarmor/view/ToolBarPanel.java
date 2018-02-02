@@ -22,7 +22,7 @@ public class ToolBarPanel extends JPanel {
         });
 
         JButton btnUnits = new JButton(new ImageIcon(this.unitsImage.getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT)));
-        btnContinue.addActionListener(e -> {
+        btnUnits.addActionListener(e -> {
             UnitsFrame units = new UnitsFrame();
             units.setVisible(true);
         });
