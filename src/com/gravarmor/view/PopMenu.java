@@ -9,7 +9,9 @@ public class PopMenu extends JPopupMenu {
 
     public PopMenu(){
         JMenuItem unitsMenu = new JMenuItem("Placer une unités");
+        JMenuItem turnMenu = new JMenuItem("Finir le tour");
         this.add(unitsMenu);
+        this.add(turnMenu);
 
         unitsMenu.addActionListener(e -> {
             System.out.println("MenuItem clicked.");

@@ -1,9 +1,7 @@
 package com.gravarmor;
 
 
-import com.gravarmor.model.hexgrid.*;
 import com.gravarmor.view.HexGridPanel;
-import com.gravarmor.view.ToolBarPanel;
 
 import javax.swing.*;
 import java.awt.*;
