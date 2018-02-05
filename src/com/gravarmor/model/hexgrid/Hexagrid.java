@@ -21,7 +21,12 @@ public class Hexagrid extends Polygon{
             for (int j = 0; j < gridMaxJ; j++) {
                 board[i][j] = new Hexagon((board[0][0].getX() + (i % 2) * DISTANCE + (j * 2 * DISTANCE)),(board[0][0].getY() + (i * ((3 * SIDELENGTH) / 2))), i, j);
                 board[i][j].calculateVertices();
-                System.out.println("X: " + board[i][j].getX() +"- Y:" + board[i][j].getY() + "- J:"+ j);
+            }
+        }
+        for (int i = 1; i < gridMaxI-1; i++){
+            for (int j = 1; j < gridMaxJ-1; j++) {
+                System.out.println(i +" : "+ j);
+                this.calculateNeighborHexs(board[i][j]);
             }
         }
     }
@@ -71,7 +76,7 @@ public class Hexagrid extends Polygon{
     }
     /*
     Renvoi tous les hexagones voisons
-     */ public Hexagon[] getNeighborHexs(Hexagon hex){
+     */ public Hexagon[] calculateNeighborHexs(Hexagon hex){
 
 
          Hexagon[] neighborHexs = {
@@ -87,5 +92,6 @@ public class Hexagrid extends Polygon{
 
         return hex.getNeighborHexs();
     }
+
 
 }
