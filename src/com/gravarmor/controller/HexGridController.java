@@ -2,6 +2,7 @@ package com.gravarmor.controller;
 
 import com.gravarmor.model.hexgrid.Hexagon;
 import com.gravarmor.model.hexgrid.Hexagrid;
+import com.gravarmor.view.PopMenu;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -23,6 +24,15 @@ public class HexGridController extends MouseAdapter {
         hex = this.hexBoard.getClickedHex(px);
         System.out.println(hex.getI() +" - " + hex.getJ());
 
+        //Clique gauche
+        if(e.getModifiers() == MouseEvent.BUTTON1_MASK){
+            System.out.println("CLIQUE GAUCHE");
+        }
+        if(e.getModifiers() == MouseEvent.BUTTON3_MASK){
+            System.out.println("CLIQUE DROITE");
+            PopMenu popupMenu = new PopMenu();
+            popupMenu.show(e.getComponent(), x, y);
+        }
     }
 
 }

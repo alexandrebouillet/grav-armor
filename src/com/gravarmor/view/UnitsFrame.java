@@ -53,6 +53,7 @@ public class UnitsFrame extends JFrame{
         this.setResizable(false);
         this.setLocationRelativeTo( null );
         this.setLayout(null);
+        this.setVisible(true);
 
     }
 

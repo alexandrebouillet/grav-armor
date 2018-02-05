@@ -118,7 +118,7 @@ public class Hexagon extends Polygon {
     public Color generateRandomColor() {
         Random random = new Random();
         Color colorHex;
-        System.out.println(random.nextFloat());
+
 
         // Watter
         if (random.nextFloat() <0.15){
