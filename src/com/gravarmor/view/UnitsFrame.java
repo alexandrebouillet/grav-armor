@@ -20,17 +20,17 @@ public class UnitsFrame extends JFrame{
         Container content = this.getContentPane();
         //tanks
         Tank tank = new Tank(1, 3, "black", 3, "Gatling Lasers", 2,
-                "black",getImage("data\\aza3 red.png"),5, "black", "Aza3",
+                "black",getImage("data/aza3 red.png"),5, "black", "Aza3",
                 3, "black","red", "alive", "blanc", -1, -1);
 
         //planes
         Plane plane = new Plane(2, 4, "black", 5, "Gatling Lasers", 3,
-                "black",getImage("data\\fl6 blue.png"),101, "black", "FL6",
+                "black",getImage("data/fl6 blue.png"),101, "black", "FL6",
                 8, "white","blue", "alive", "black", -1, -1);
 
         //infantries
         Infantry infantry = new Infantry(3, 3, "white", 2, "Missiles", 3,
-                "black",getImage("data\\ainf blue.png"),2, "yellow", "A-INF",
+                "black",getImage("data/ainf blue.png"),2, "yellow", "A-INF",
                 7, "black","blue", "alive", "black", -1, -1);
 
         JComboBox units = new JComboBox();
