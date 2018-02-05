@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PopMenu extends JPopupMenu {
+public class PopHexMenu extends JPopupMenu {
 
 
-    public PopMenu(){
+    public PopHexMenu(){
         JMenuItem unitsMenu = new JMenuItem("Placer une unités");
         JMenuItem turnMenu = new JMenuItem("Finir le tour");
         this.add(unitsMenu);
