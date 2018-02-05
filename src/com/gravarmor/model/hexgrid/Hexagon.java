@@ -133,7 +133,6 @@ public class Hexagon extends Polygon {
             colorHex = Color.GRAY;
         }
 
-
         return colorHex;
     }
 
