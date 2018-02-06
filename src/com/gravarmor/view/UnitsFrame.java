@@ -79,30 +79,18 @@ public class UnitsFrame extends JFrame{
 
         btn.addActionListener(e -> {
             System.out.println("MenuItem clicked.");
-//            UnitsFrame unit = new UnitsFrame(hex, component);
-//            System.out.println(x);
-//            System.out.println(y);
+
             Unit[] unitsArray = this.getUnitArray();
-//            System.out.println(unitsArray[0].getUnitName());
-//            System.out.println(unitsArray[1].getUnitName());
-//            System.out.println(unitsArray[2].getUnitName());
+
             Object unitSelected = units.getSelectedItem();
             for (Unit unitCheck: unitsArray) {
                 if (unitCheck.getUnitName()==unitSelected){
-//                    System.out.println(unitSelected);
-//                    System.out.println(unitCheck.getUnitName());
+
                     Point imgPos = hex.getCenterPoint();
                     unitCheck.place(unitCheck, (int) imgPos.getX(), (int) imgPos.getY());
                     hex.setUnit(unitCheck);
-
-//                    hex.get
-//
-//                    System.out.println(hex.getCenterPoint());
-//                    System.out.println(x);
-//                    System.out.println(y);
-
+                    
                     Image img = unitCheck.getUnitPicture();
-//                    hex.getUnit().setUnitPicture(img);
 
                     this.addPicture(img,(int)imgPos.getX(), (int)imgPos.getY(), component);
                     this.setVisible(false);
