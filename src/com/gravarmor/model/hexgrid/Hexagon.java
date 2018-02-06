@@ -7,8 +7,7 @@ import java.text.DecimalFormat;
 import java.util.Random;
 
 public class Hexagon extends Polygon {
-
-
+    
     protected Point centerPoint;
     protected Point[] vertices = new Point[6];
     //POSITION DANS LA GRILLE
@@ -22,13 +21,11 @@ public class Hexagon extends Polygon {
 
     protected Hexagon[] neighborHexs;
 
-
-    public Hexagon(int x, int y, int i, int j, Unit unit){
+    public Hexagon(int x, int y, int i, int j){
         this.setI(i);
         this.setJ(j);
         this.setCenterPoint(new Point(x, y));
         this.setUnit(unit);
-
     }
 
 
