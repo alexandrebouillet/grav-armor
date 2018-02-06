@@ -15,9 +15,16 @@ public class PopHexMenu extends JPopupMenu {
         JMenuItem unitsMenu = new JMenuItem("Placer une unités");
         JMenuItem turnMenu = new JMenuItem("Finir le tour");
 
+
+
         this.add(unitsMenu);
         this.add(turnMenu);
-
+        if(hex.getUnit() != null){
+            JMenuItem fireMenu = new JMenuItem("Attaquer !");
+            JMenuItem moveMenu = new JMenuItem("Bouger !");
+            this.add(fireMenu);
+            this.add(moveMenu);
+        }
         unitsMenu.addActionListener(e -> {
             System.out.println("MenuItem clicked.");
             UnitsFrame unit = new UnitsFrame(hex, component);

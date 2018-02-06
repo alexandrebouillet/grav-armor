@@ -89,7 +89,7 @@ public class UnitsFrame extends JFrame{
                     Point imgPos = hex.getCenterPoint();
                     unitCheck.place(unitCheck, (int) imgPos.getX(), (int) imgPos.getY());
                     hex.setUnit(unitCheck);
-                    
+
                     Image img = unitCheck.getUnitPicture();
 
                     this.addPicture(img,(int)imgPos.getX(), (int)imgPos.getY(), component);
