@@ -25,7 +25,6 @@ public class Hexagon extends Polygon {
         this.setI(i);
         this.setJ(j);
         this.setCenterPoint(new Point(x, y));
-        this.setUnit(unit);
     }
 
 

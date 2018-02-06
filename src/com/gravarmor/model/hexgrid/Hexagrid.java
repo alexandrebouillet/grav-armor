@@ -17,12 +17,12 @@ public class Hexagrid extends Polygon{
     protected Hexagon[][] board = new Hexagon[gridMaxI][gridMaxJ];
 
     public Hexagrid() {
-        Unit unit = new Unit();
-        board[0][0] = new Hexagon(0, 0, 0, 0, unit);
+
+        board[0][0] = new Hexagon(0, 0, 0, 0);
 
         for (int i = 0; i < gridMaxI; i++){
             for (int j = 0; j < gridMaxJ; j++) {
-                board[i][j] = new Hexagon((board[0][0].getX() + (i % 2) * DISTANCE + (j * 2 * DISTANCE)),(board[0][0].getY() + (i * ((3 * SIDELENGTH) / 2))), i, j, unit);
+                board[i][j] = new Hexagon((board[0][0].getX() + (i % 2) * DISTANCE + (j * 2 * DISTANCE)),(board[0][0].getY() + (i * ((3 * SIDELENGTH) / 2))), i, j);
                 board[i][j].calculateVertices();
             }
         }
