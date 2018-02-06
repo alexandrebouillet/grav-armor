@@ -3,7 +3,6 @@ package com.gravarmor.model.hexgrid;
 import com.gravarmor.model.units.Unit;
 
 import java.awt.*;
-import java.text.DecimalFormat;
 import java.util.Random;
 
 public class Hexagon extends Polygon {

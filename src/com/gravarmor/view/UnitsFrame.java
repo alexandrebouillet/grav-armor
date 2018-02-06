@@ -80,29 +80,21 @@ public class UnitsFrame extends JFrame{
         btn.addActionListener(e -> {
             System.out.println("MenuItem clicked.");
 //            UnitsFrame unit = new UnitsFrame(hex, component);
-            int x = hex.getX();
-            int y = hex.getY();
 //            System.out.println(x);
 //            System.out.println(y);
             Unit[] unitsArray = this.getUnitArray();
-
 //            System.out.println(unitsArray[0].getUnitName());
 //            System.out.println(unitsArray[1].getUnitName());
 //            System.out.println(unitsArray[2].getUnitName());
-
             Object unitSelected = units.getSelectedItem();
-
             for (Unit unitCheck: unitsArray) {
                 if (unitCheck.getUnitName()==unitSelected){
 //                    System.out.println(unitSelected);
 //                    System.out.println(unitCheck.getUnitName());
-                    unitCheck.place(unitCheck, x, y);
+                    Point imgPos = hex.getCenterPoint();
+                    unitCheck.place(unitCheck, (int) imgPos.getX(), (int) imgPos.getY());
                     hex.setUnit(unitCheck);
-                    hex.getCenterPoint();
-                    Graphics g = this.getGraphics();
-                    Graphics2D g2 = (Graphics2D)g;
-                    hex.drawHexagon(g2);
-                    g2.setBackground(Color.red);
+
 //                    hex.get
 //
 //                    System.out.println(hex.getCenterPoint());
@@ -112,9 +104,7 @@ public class UnitsFrame extends JFrame{
                     Image img = unitCheck.getUnitPicture();
 //                    hex.getUnit().setUnitPicture(img);
 
-//                    addPicture(img, x, y, component);
-
-                    this.setIconImage(img);
+                    this.addPicture(img,(int)imgPos.getX(), (int)imgPos.getY(), component);
                     this.setVisible(false);
 
                 }
@@ -124,17 +114,9 @@ public class UnitsFrame extends JFrame{
 
     }
 
-    public void addPicture(Image img, int x, int y, Component component){
-        Graphics g = img.getGraphics();
-
-//        ImageObserver imgO = (ImageObserver)img;
-        g.drawImage(img, x, y, component);
-        System.out.println(component);
-        this.setIconImage(img);
-
-//        Graphics2D g2 =  (Graphics2D)g;
-//        BufferedImageOp imgObs = (BufferedImageOp)img;
-//        g2.drawImage((BufferedImage) img, imgObs, x, y);
+    private void addPicture(Image img, int x, int y, Component component){
+        Graphics g = component.getGraphics();
+        g.drawImage(img, x -25, y-25, 50, 50, null);
     }
 
     public static Image getImage(String path){
