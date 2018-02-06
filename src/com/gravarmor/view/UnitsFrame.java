@@ -1,19 +1,35 @@
 package com.gravarmor.view;
 
+import com.gravarmor.model.hexgrid.Hexagon;
 import com.gravarmor.model.units.Infantry;
 import com.gravarmor.model.units.Plane;
 import com.gravarmor.model.units.Tank;
+import com.gravarmor.model.units.Unit;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
+import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class UnitsFrame extends JFrame{
 
-    public UnitsFrame(){
+    private Unit[] unitArray ;
+
+
+    public Unit[] getUnitArray() {
+        return unitArray;
+    }
+
+    public void setUnitArray(Unit[] unitArray) {
+        this.unitArray = unitArray;
+    }
+
+    public UnitsFrame(Hexagon hex, Component component){
         this.setTitle("Liste des unités");
 
         setDefaultCloseOperation( JFrame.HIDE_ON_CLOSE );
@@ -33,10 +49,16 @@ public class UnitsFrame extends JFrame{
                 "black",getImage("data/ainf blue.png"),2, "yellow", "A-INF",
                 7, "black","blue", "alive", "black", -1, -1);
 
+        this.unitArray = new Unit[]{tank, plane, infantry};
+        System.out.println(this.unitArray);
+
         JComboBox units = new JComboBox();
-        units.addItem(tank.getUnitName());
-        units.addItem(plane.getUnitName ());
-        units.addItem(infantry.getUnitName ());
+
+        for (Unit unit : unitArray) {
+            units.addItem(unit.getUnitName());
+        }
+
+        System.out.println(this.getComponents().length);
         units.setSize(125,50);
         units.setBounds(25, 25, 125, 25);
 
@@ -55,6 +77,64 @@ public class UnitsFrame extends JFrame{
         this.setLayout(null);
         this.setVisible(true);
 
+        btn.addActionListener(e -> {
+            System.out.println("MenuItem clicked.");
+//            UnitsFrame unit = new UnitsFrame(hex, component);
+            int x = hex.getX();
+            int y = hex.getY();
+//            System.out.println(x);
+//            System.out.println(y);
+            Unit[] unitsArray = this.getUnitArray();
+
+//            System.out.println(unitsArray[0].getUnitName());
+//            System.out.println(unitsArray[1].getUnitName());
+//            System.out.println(unitsArray[2].getUnitName());
+
+            Object unitSelected = units.getSelectedItem();
+
+            for (Unit unitCheck: unitsArray) {
+                if (unitCheck.getUnitName()==unitSelected){
+//                    System.out.println(unitSelected);
+//                    System.out.println(unitCheck.getUnitName());
+                    unitCheck.place(unitCheck, x, y);
+                    hex.setUnit(unitCheck);
+                    hex.getCenterPoint();
+                    Graphics g = this.getGraphics();
+                    Graphics2D g2 = (Graphics2D)g;
+                    hex.drawHexagon(g2);
+                    g2.setBackground(Color.red);
+//                    hex.get
+//
+//                    System.out.println(hex.getCenterPoint());
+//                    System.out.println(x);
+//                    System.out.println(y);
+
+                    Image img = unitCheck.getUnitPicture();
+//                    hex.getUnit().setUnitPicture(img);
+
+//                    addPicture(img, x, y, component);
+
+                    this.setIconImage(img);
+                    this.setVisible(false);
+
+                }
+            }
+
+        });
+
+    }
+
+    public void addPicture(Image img, int x, int y, Component component){
+        Graphics g = img.getGraphics();
+
+//        ImageObserver imgO = (ImageObserver)img;
+        g.drawImage(img, x, y, component);
+        System.out.println(component);
+        this.setIconImage(img);
+
+//        Graphics2D g2 =  (Graphics2D)g;
+//        BufferedImageOp imgObs = (BufferedImageOp)img;
+//        g2.drawImage((BufferedImage) img, imgObs, x, y);
     }
 
     public static Image getImage(String path){

@@ -2,7 +2,7 @@ package com.gravarmor.model.units;
 
 import java.awt.*;
 
-public abstract class Unit {
+public class Unit {
     private int id;
     private int electronicWarfareValue;
     private String electronicWarfareColor;
@@ -41,6 +41,10 @@ public abstract class Unit {
         this.colorSpec = colorSpec;
         this.x = x;
         this.y = y;
+    }
+
+    public Unit() {
+
     }
 
     public void place(Unit unit, int x, int y){

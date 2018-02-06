@@ -30,7 +30,9 @@ public class HexGridController extends MouseAdapter {
         }
         if(e.getModifiers() == MouseEvent.BUTTON3_MASK){
             System.out.println("CLIQUE DROITE");
-            PopHexMenu popupMenu = new PopHexMenu();
+
+            PopHexMenu popupMenu = new PopHexMenu(hex, e.getComponent());
+
             popupMenu.show(e.getComponent(), x, y);
         }
     }
