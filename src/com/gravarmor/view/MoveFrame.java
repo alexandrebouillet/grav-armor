@@ -61,6 +61,9 @@ public class MoveFrame extends JFrame{
                 String pos = new String(hexR.getI()+","+hexR.getJ());
                 if (pos.equals(moveSelected)){
                     hexR.setUnit(hex.getUnit());
+                    hex.redrawHexagon(component.getGraphics());
+                    Graphics g = component.getGraphics();
+                    g.drawImage(hex.getUnit().getUnitPicture(), hexR.getX()-22, hexR.getY()-22, 45, 45, null);
                     hex.setUnit(null);
                 }
             }

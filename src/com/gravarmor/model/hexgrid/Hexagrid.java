@@ -19,11 +19,11 @@ public class Hexagrid extends Polygon{
     public Hexagrid() {
 
         board[0][0] = new Hexagon(0, 0, 0, 0);
-
         for (int i = 0; i < gridMaxI; i++){
             for (int j = 0; j < gridMaxJ; j++) {
                 board[i][j] = new Hexagon((board[0][0].getX() + (i % 2) * DISTANCE + (j * 2 * DISTANCE)),(board[0][0].getY() + (i * ((3 * SIDELENGTH) / 2))), i, j);
                 board[i][j].calculateVertices();
+                System.out.println("PAR CICICI");
             }
         }
         for (int i = 1; i < gridMaxI-1; i++){
@@ -218,4 +218,6 @@ public class Hexagrid extends Polygon{
 
         return hex.getNeighborHexs();
     }
+
+
 }

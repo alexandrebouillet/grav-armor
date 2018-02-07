@@ -82,7 +82,7 @@ public class Unit {
         return rep;
     }
 
-    public void fight(Unit attackUnit, Unit defenseUnit){
+    public String fight(Unit attackUnit, Unit defenseUnit){
         int de = 12;
         double pourcent = 0;
         double rand;
@@ -111,7 +111,7 @@ public class Unit {
 
         System.out.println("status : "+defenseUnit.getStatus());
 
-
+        return defenseUnit.getStatus();
     }
 
     public int getId() {

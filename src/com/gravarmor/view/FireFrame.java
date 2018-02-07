@@ -62,7 +62,11 @@ public class FireFrame extends JFrame {
             Object unitSelected = fireRange.getSelectedItem();
             for (Unit unitCheck: this.unitsArray) {
                 if (unitCheck.getUnitName()== unitSelected){
-                    hex.getUnit().fight(hex.getUnit(), unitCheck);
+                    String unitStatus = hex.getUnit().fight(hex.getUnit(), unitCheck);
+                    if (unitStatus.equals("dead")){
+                        hex.redrawHexagon(component.getGraphics());
+                        hex.setUnit(null);
+                    }
                 }
             }
             this.setVisible(false);

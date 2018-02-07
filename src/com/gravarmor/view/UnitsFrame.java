@@ -105,7 +105,7 @@ public class UnitsFrame extends JFrame{
 
     private void addPicture(Image img, int x, int y, Component component){
         Graphics g = component.getGraphics();
-        g.drawImage(img, x -25, y-25, 50, 50, null);
+        g.drawImage(img, x-22, y-22, 45, 45, null);
     }
 
     public static Image getImage(String path){

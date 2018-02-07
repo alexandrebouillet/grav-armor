@@ -135,9 +135,21 @@ public class Hexagon extends Polygon {
         g.setColor(Color.BLACK);
         g.drawPolygon(poly);
         g.drawString(this.getI()+","+this.getJ(), this.getX() - 15, this.getY());
-
+        this.isColor = true;
 
     }
+
+    public void redrawHexagon(Graphics g){
+        Polygon poly = this.convertVerticesToPolygon();
+
+        this.generateRandomColor();
+        g.setColor(this.color);
+        g.fillPolygon(poly);
+        g.setColor(Color.BLACK);
+        g.drawPolygon(poly);
+        g.drawString(this.getI()+","+this.getJ(), this.getX() - 15, this.getY());
+    }
+
 
     public Polygon convertVerticesToPolygon(){
 
@@ -171,8 +183,6 @@ public class Hexagon extends Polygon {
         }
 
         this.color = colorHex;
-        this.isColor = true;
-
         return colorHex;
     }
 
