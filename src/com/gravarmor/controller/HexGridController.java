@@ -20,7 +20,6 @@ public class HexGridController extends MouseAdapter {
         int x = e.getX();
         int y = e.getY();
         System.out.println(x +" - " + y);
-
         Point px = new Point(x,y);
 
         Hexagon hex;
@@ -34,16 +33,7 @@ public class HexGridController extends MouseAdapter {
         if(e.getModifiers() == MouseEvent.BUTTON3_MASK){
             System.out.println("CLIQUE DROITE");
 
-            PopHexMenu popupMenu = new PopHexMenu(hex, e.getComponent());
-
-            Hexagon[] hexArray = this.hexBoard.getMultipleNeighborsHexs(hex, 3);
-
-//            for (Hexagon hexaA: hexArray ) {
-//                if (hexaA!=null){
-//                    System.out.println("I "+hexaA.getI()+ " j "+hexaA.getJ());
-//                }
-//            }
-
+            PopHexMenu popupMenu = new PopHexMenu(hex, e.getComponent(), this.hexBoard);
 
             popupMenu.show(e.getComponent(), x, y);
         }

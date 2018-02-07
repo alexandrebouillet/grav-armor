@@ -1,6 +1,7 @@
 package com.gravarmor.view;
 
 import com.gravarmor.model.hexgrid.Hexagon;
+import com.gravarmor.model.hexgrid.Hexagrid;
 import com.gravarmor.model.units.Unit;
 
 import javax.swing.*;
@@ -11,7 +12,7 @@ import java.awt.event.ActionListener;
 public class PopHexMenu extends JPopupMenu {
 
 
-    public PopHexMenu(Hexagon hex, Component component){
+    public PopHexMenu(Hexagon hex, Component component, Hexagrid hexBoard){
         JMenuItem unitsMenu = new JMenuItem("Placer une unités");
         JMenuItem turnMenu = new JMenuItem("Finir le tour");
 
@@ -24,6 +25,16 @@ public class PopHexMenu extends JPopupMenu {
             JMenuItem moveMenu = new JMenuItem("Bouger !");
             this.add(fireMenu);
             this.add(moveMenu);
+
+            fireMenu.addActionListener(e -> {
+                System.out.println("Fire MenuItem clicked.");
+                new FireFrame(hex, component, hexBoard);
+            });
+            moveMenu.addActionListener(e -> {
+                System.out.println("Move MenuItem clicked.");
+                new MoveFrame(hex, component, hexBoard);
+            });
+
         }
         unitsMenu.addActionListener(e -> {
             System.out.println("MenuItem clicked.");

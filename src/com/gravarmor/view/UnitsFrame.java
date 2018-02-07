@@ -30,10 +30,13 @@ public class UnitsFrame extends JFrame{
     }
 
     public UnitsFrame(Hexagon hex, Component component){
+
+        System.out.println(hex.getX()+ " - "+ hex.getY() );
+
         this.setTitle("Liste des unités");
 
         setDefaultCloseOperation( JFrame.HIDE_ON_CLOSE );
-        Container content = this.getContentPane();
+
         //tanks
         Tank tank = new Tank(1, 3, "black", 3, "Gatling Lasers", 2,
                 "black",getImage("data/aza3 red.png"),5, "black", "Aza3",
@@ -50,7 +53,6 @@ public class UnitsFrame extends JFrame{
                 7, "black","blue", "alive", "black", -1, -1);
 
         this.unitArray = new Unit[]{tank, plane, infantry};
-        System.out.println(this.unitArray);
 
         JComboBox units = new JComboBox();
 
@@ -78,7 +80,7 @@ public class UnitsFrame extends JFrame{
         this.setVisible(true);
 
         btn.addActionListener(e -> {
-            System.out.println("MenuItem clicked.");
+            System.out.println("Button OK clicked.");
 
             Unit[] unitsArray = this.getUnitArray();
 
