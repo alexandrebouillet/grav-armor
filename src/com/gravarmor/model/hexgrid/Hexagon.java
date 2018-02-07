@@ -1,12 +1,12 @@
 package com.gravarmor.model.hexgrid;
 
+import com.gravarmor.model.units.Unit;
+
 import java.awt.*;
-import java.text.DecimalFormat;
 import java.util.Random;
 
 public class Hexagon extends Polygon {
-
-
+    
     protected Point centerPoint;
     protected Point[] vertices = new Point[6];
     //POSITION DANS LA GRILLE
@@ -16,10 +16,9 @@ public class Hexagon extends Polygon {
     protected int x;
     protected int y;
 
+    protected Unit unit;
+
     protected Hexagon[] neighborHexs;
-
-
-
 
     public Hexagon(int x, int y, int i, int j){
         this.setI(i);
@@ -69,6 +68,22 @@ public class Hexagon extends Polygon {
 
     public int getY() {
         return (int)this.centerPoint.getY();
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public Unit getUnit() {
+        return unit;
+    }
+
+    public void setUnit(Unit unit) {
+        this.unit = unit;
     }
 
     public Hexagon[] getNeighborHexs() {
@@ -133,10 +148,8 @@ public class Hexagon extends Polygon {
             colorHex = Color.GRAY;
         }
 
-
         return colorHex;
     }
-
 
 
 
