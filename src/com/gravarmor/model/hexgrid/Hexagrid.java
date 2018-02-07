@@ -110,6 +110,9 @@ public class Hexagrid extends Polygon{
     }
 
 
+
+
+
     /*
     Renvoi tous les hexagones voisons
      */
@@ -136,116 +139,15 @@ public class Hexagrid extends Polygon{
                 {
                     for(int incMid = 0; incMid < maxMid; incMid++)
                     {
-                        tabHex[compteur] = board[hex.getI()][hex.getJ()+initRange+incMid];
-                        compteur++;
-                        doubleHex++;
-                    }
-                }
-                else
-                {
-                    for(int incHex = 0; incHex < maxMid-i; incHex++)
-                    {
-                        //Pour avoir le coter haut des voisins hex
-                        tabHex[compteur] = board[hex.getI()-i][hex.getJ()+initRange+incHex+incDoubHex];
-                        //Pour avoir le coter bas des voisins hex
-                        tabHex[compteur] = board[hex.getI()+i][hex.getJ()+initRange+incHex+incDoubHex];
-                        compteur++;
+                        if(initRange+incMid != 0)
+                        {
+                            tabHex[compteur] = board[hex.getI()][hex.getJ()+initRange+incMid];
+                            System.out.println("tabHex i 0 "+tabHex[compteur].getI()+" tabHex j 0 "+tabHex[compteur].getJ());
+
+                            compteur++;
+                        }
                     }
                     doubleHex++;
-                    if(doubleHex == 2){doubleHex = 0; incDoubHex++;}
-
-                }
-
-
-            }
-
-        }
-        else
-        {
-            for(int i = 0; i < maxTopBot; i++)
-            {
-                //Si c'est 0 alors on calcul la partie du milieu
-                if(i == 0)
-                {
-                    for(int incMid = 0; incMid < maxMid; incMid++)
-                    {
-                        tabHex[compteur] = board[hex.getI()][hex.getJ()-initRange-incMid];
-                        compteur++;
-                        doubleHex++;
-                    }
-                }
-                else
-                {
-                    for(int incHex = 0; incHex < maxMid-i; incHex++)
-                    {
-                        //Pour avoir le coter haut des voisins hex
-                        tabHex[compteur] = board[hex.getI()-i][hex.getJ()-initRange-incHex-incDoubHex];
-                        //Pour avoir le coter bas des voisins hex
-                        tabHex[compteur] = board[hex.getI()+i][hex.getJ()-initRange-incHex-incDoubHex];
-                        compteur++;
-                    }
-                    doubleHex++;
-                    if(doubleHex == 2){doubleHex = 0; incDoubHex++;}
-                }
-
-
-            }
-
-        }
-
-
-        hex.setNeighborHexs(tabHex);
-
-        return hex.getNeighborHexs();
-    }
-
-    public int calculHex(int range)
-    {
-        int compteur = range;
-        int ret = 0;
-
-        for(int i = 0; i < range; i++)
-        {
-            ret += compteur*6;
-            compteur--;
-        }
-
-        return ret;
-    }
-
-
-    /*
-    Renvoi tous les hexagones voisons
-     */
-    public Hexagon[] getMultipleNeighborsHexs(Hexagon hex, int range){
-
-        int compteur = 0;
-        int maxMid = range * 2 + 1;
-        int maxTopBot = range + 1;
-        int initRange = -(range);
-        int xHex = hex.getI();
-        int nbHex = calculHex(range)+1;
-        int doubleHex = 0;
-        int incDoubHex = 0;
-
-
-        Hexagon[] tabHex = new Hexagon[nbHex];
-
-        if(xHex%2 == 0)
-        {
-            for(int i = 0; i < maxTopBot; i++)
-            {
-                //Si c'est 0 alors on calcul la partie du milieu
-                if(i == 0)
-                {
-                    for(int incMid = 0; incMid < maxMid; incMid++)
-                    {
-                        tabHex[compteur] = board[hex.getI()][hex.getJ()+initRange+incMid];
-                        System.out.println("tabHex i 0 "+tabHex[compteur].getI()+" tabHex j 0 "+tabHex[compteur].getJ());
-
-                        compteur++;
-                        doubleHex++;
-                    }
                 }
                 else
                 {
@@ -279,12 +181,14 @@ public class Hexagrid extends Polygon{
                 {
                     for(int incMid = 0; incMid < maxMid; incMid++)
                     {
-                        tabHex[compteur] = board[hex.getI()][hex.getJ()-initRange-incMid];
-                        System.out.println("tabHex i 2 "+tabHex[compteur].getI()+" tabHex j 2 "+tabHex[compteur].getJ());
+                        if(initRange+incMid != 0) {
+                            tabHex[compteur] = board[hex.getI()][hex.getJ() - initRange - incMid];
+                            System.out.println("tabHex i 2 " + tabHex[compteur].getI() + " tabHex j 2 " + tabHex[compteur].getJ());
 
-                        compteur++;
-                        doubleHex++;
+                            compteur++;
+                        }
                     }
+                    doubleHex++;
                 }
                 else
                 {
