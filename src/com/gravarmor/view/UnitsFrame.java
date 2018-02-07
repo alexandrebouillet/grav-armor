@@ -101,7 +101,6 @@ public class UnitsFrame extends JFrame{
             }
 
         });
-
     }
 
     private void addPicture(Image img, int x, int y, Component component){

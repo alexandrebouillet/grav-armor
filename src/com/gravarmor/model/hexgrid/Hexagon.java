@@ -18,6 +18,10 @@ public class Hexagon extends Polygon {
 
     protected Unit unit;
 
+    protected Color color;
+
+    protected Boolean isColor = false;
+
     protected Hexagon[] neighborHexs;
 
     public Hexagon(int x, int y, int i, int j){
@@ -82,6 +86,18 @@ public class Hexagon extends Polygon {
         return unit;
     }
 
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Boolean color) {
+        isColor = color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public void setUnit(Unit unit) {
         this.unit = unit;
     }
@@ -105,14 +121,20 @@ public class Hexagon extends Polygon {
 
     }
 
-    public void drawHexagon(Graphics2D g2){
+    public void drawHexagon(Graphics g){
         Polygon poly = this.convertVerticesToPolygon();
         this.generateRandomColor();
-        g2.setColor(this.generateRandomColor());
-        g2.fillPolygon(poly);
-        g2.setColor(Color.BLACK);
-        g2.drawPolygon(poly);
-        g2.drawString(this.getI()+","+this.getJ(), this.getX() - 15, this.getY());
+        if(this.isColor.equals(true)){
+            g.setColor(this.color);
+            //System.out.println("Par ici");
+        }else{
+            //System.out.println("Par là");
+            g.setColor(this.generateRandomColor());
+        }
+        g.fillPolygon(poly);
+        g.setColor(Color.BLACK);
+        g.drawPolygon(poly);
+        g.drawString(this.getI()+","+this.getJ(), this.getX() - 15, this.getY());
 
 
     }
@@ -147,6 +169,9 @@ public class Hexagon extends Polygon {
             //Mountains
             colorHex = Color.GRAY;
         }
+
+        this.color = colorHex;
+        this.isColor = true;
 
         return colorHex;
     }

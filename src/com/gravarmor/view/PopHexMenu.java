@@ -38,8 +38,9 @@ public class PopHexMenu extends JPopupMenu {
         }
         unitsMenu.addActionListener(e -> {
             System.out.println("MenuItem clicked.");
-            UnitsFrame unit = new UnitsFrame(hex, component);
+            new UnitsFrame(hex, component);
 
         });
+        component.revalidate();
     }
 }

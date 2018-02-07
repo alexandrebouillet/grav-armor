@@ -27,11 +27,11 @@ public class HexGridPanel extends JPanel {
     {
         Graphics2D g2 = (Graphics2D)g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        super.paintComponent(g2);
+        super.paintComponent(g);
         Hexagon[][] hex = this.hexBoard.getBoard();
         for (int i=0;i< this.hexBoard.getGridMaxI();i++) {
             for (int j=0;j< this.hexBoard.getGridMaxJ();j++) {
-                hex[i][j].drawHexagon(g2);
+                hex[i][j].drawHexagon(g);
             }
         }
     }
