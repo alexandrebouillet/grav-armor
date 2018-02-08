@@ -15,13 +15,13 @@ public class FireFrame extends JFrame {
 
     private Hexagrid hexBoard;
 
-    private ArrayList<Unit> unitsArray = new ArrayList<>();
+    private ArrayList<Hexagon> hexUnitsArray = new ArrayList<>();
 
     public FireFrame(Hexagon hex, Component component, Hexagrid hexboard) {
 
         this.hexBoard = hexboard;
         this.hexRange = this.hexBoard.getMultipleNeighborsHexs(hex, hex.getUnit().getMaximumRangeValue());
-        this.unitsArray = this.getUnitOnHex(hexRange);
+        this.hexUnitsArray = this.getUnitOnHex(hexRange);
 
         this.setTitle("Attaquer !");
 
@@ -29,8 +29,8 @@ public class FireFrame extends JFrame {
 
         JComboBox fireRange = new JComboBox();
 
-        for (Unit unit: this.unitsArray) {
-            fireRange.addItem(unit.getUnitName());
+        for (Hexagon hexA: this.hexUnitsArray ) {
+            fireRange.addItem(hexA.getUnit().getUnitName());
         }
 
         fireRange.setSize(125,50);
@@ -60,12 +60,12 @@ public class FireFrame extends JFrame {
             System.out.println("Button Attaquer clicked.");
 
             Object unitSelected = fireRange.getSelectedItem();
-            for (Unit unitCheck: this.unitsArray) {
-                if (unitCheck.getUnitName()== unitSelected){
-                    String unitStatus = hex.getUnit().fight(hex.getUnit(), unitCheck);
+            for (Hexagon unitCheck: this.hexUnitsArray) {
+                if (unitCheck.getUnit().getUnitName() == unitSelected){
+                    String unitStatus = hex.getUnit().fight(hex.getUnit(), unitCheck.getUnit());
                     if (unitStatus.equals("dead")){
-                        hex.redrawHexagon(component.getGraphics());
-                        hex.setUnit(null);
+                        unitCheck.redrawHexagon(component.getGraphics());
+                        unitCheck.setUnit(null);
                     }
                 }
             }
@@ -74,17 +74,17 @@ public class FireFrame extends JFrame {
 
     }
 
-    private ArrayList<Unit> getUnitOnHex(Hexagon[] hexRange){
-        ArrayList<Unit> unitArray = new ArrayList<>();
+    private ArrayList<Hexagon> getUnitOnHex(Hexagon[] hexRange){
+        ArrayList<Hexagon> hexUnitArray = new ArrayList<>();
         for (Hexagon hex: hexRange) {
             if(hex != null){
                 Unit unit = hex.getUnit();
                 if(unit != null){
-                    unitArray.add(unit);
+                    hexUnitArray.add(hex);
                 }
             }
         }
-        return unitArray;
+        return hexUnitArray;
     }
 
 }
